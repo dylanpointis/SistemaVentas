@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "HistorialVenta";
+}
+
+<div class="card">
+    <div class="card-header py-3 bg-primary">
+        <h6 class="m-0 font-weight-bold text-white">Historial de ventas</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                
+                    <label for="cboBuscarPor">Buscar por</label>
+                    <select class="form-control" id="cboBuscarPor">
+                        <option value="fecha">Fecha</option>
+                        <option value="numero">Número venta</option>
+                    </select>
+                
+            </div>
+            <div class="col-md-3 busqueda-fecha">
+                
+                    <label for="txtFechaInicio">Fecha Inicio</label>
+                <input type="date" id="txtFechaInicio" class="form-control" max="@DateTime.Today.ToString("yyyy-MM-dd")">
+                
+            </div>
+            <div class="col-md-3 busqueda-fecha">
+                
+                    <label for="txtFechaFin">Fecha Fin</label>
+                <input type="date" id="txtFechaFin" class="form-control" max="@DateTime.Today.ToString("yyyy-MM-dd")">
+                
+            </div>
+            <div class="col-md-3 busqueda-venta">
+                
+                    <label for="txtNumeroVenta">Número de venta</label>
+                    <input type="text" id="txtNumeroVenta" class="form-control">
+               
+            </div>
+        </div>
+        <button type="button" id="btnBuscar" class="btn btn-success mt-2">Buscar</button>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col">
+            <table class="table" style="width: 100%" id="tbventa">
+                <thead>
+                    <tr>
+                        <th>Fecha Registro</th>
+                        <th>Numero Venta</th>
+                        <th>Tipo Documento</th>
+                        <th>Documento Cliente</th>
+                        <th>Nombre Cliente</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="modalContainer"></div>
+<br />
+
+
+
+@section Scripts{
+    <script src="~/js/Historial_Venta.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+}
+

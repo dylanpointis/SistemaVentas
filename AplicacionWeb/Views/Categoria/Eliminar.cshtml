@@ -1,0 +1,16 @@
+﻿@model CategoriaVM
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Eliminar</h1>
+
+<form asp-action="Eliminar" asp-controller="Categoria" method="post">
+    <input asp-for="oCategoria.IdCategoria" type="hidden">
+    <h1 class="text-danger">Estas seguro que deseas eliminar la categoria @Html.DisplayFor(c => c.oCategoria.Descripcion) </h1>
+
+
+
+    <hr />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+</form>

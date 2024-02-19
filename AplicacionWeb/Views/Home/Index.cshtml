@@ -1,0 +1,24 @@
+﻿@model List<Entity.Producto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @ViewData["Mensaje"]</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="d-flex flex-wrap">
+    @foreach(var item in Model)
+    {
+            <div class="card mx-4 mb-3" style="width: 18rem;">
+            <img src="@item.UrlImagen" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@item.Nombre</h5>
+                <p class="card-text">@item.Precio.</p>
+                <a class="btn btn-primary btn-sm" asp-action="Detalle" asp-controller="Producto" asp-route-IdProducto="@item.IdProducto">Ir</a>
+            </div>
+        </div>
+    }
+    </div>
+</div>

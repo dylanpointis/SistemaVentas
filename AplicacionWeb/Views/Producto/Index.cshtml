@@ -1,0 +1,67 @@
+﻿@model List<Entity.Producto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a class="text-decoration-none text-dark d-inline-block" asp-area="" asp-controller="Producto" asp-action="Index">
+    <h1>Productos</h1>
+</a>
+
+
+<div class="card-body">
+    <div class="w-100 d-flex justify-content-between">
+        <a class="btn btn-success btn-sm" asp-action="Crear" asp-controller="Producto">Crear nuevo</a>
+        <div class="ms-auto">
+            <form asp-action="BuscarProductos" asp-controller="Producto" method="get">
+                <input type="text" id="txtBuscarProducto" name="busqueda" />
+                <button type="submit" class="btn btn-light">Buscar</button>
+            </form>
+        </div>
+    </div>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>CodigoBarra</th>
+                <th>Marca</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Categoria</th>
+                <th>Stock</th>
+                <th>Precio</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img style="height:60px ;" src="@item.UrlImagen" class="rounded mx-auto d-block" /><img /></td>
+                    <td>@item.CodigoBarra</td>
+                    <td>@item.Marca</td>
+                    <td>@item.Nombre</td>
+                    <td>@item.Descripcion</td>
+                    <td> 
+                        @(item.IdCategoriaNavigation != null ? item.IdCategoriaNavigation.Descripcion : "No hay categoría")
+                    </td>
+
+
+                    <td>@item.Stock</td>
+                    <td>@item.Precio</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="Editar" asp-controller="Producto" asp-route-IdProducto="@item.IdProducto">Editar</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Eliminar" asp-controller="Producto" asp-route-IdProducto="@item.IdProducto">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="~/js/BuscarProductos.js"></script>
+}

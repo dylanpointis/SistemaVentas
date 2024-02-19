@@ -1,0 +1,38 @@
+﻿@using Entity
+@model List<Categoria>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div class="card-body">
+    <a class="btn btn-success btn-sm" asp-action="Crear" asp-controller="Categoria">Crear nuevo</a>
+
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Descripcion</th>
+                <th>Es Activo</th>
+                <th>FechaRegistro</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Descripcion</td>
+                    <td>@item.EsActivo</td>
+                    <td>@item.FechaRegistro</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="Editar" asp-controller="Categoria" asp-route-IdCategoria="@item.IdCategoria">Editar</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Eliminar" asp-controller="Categoria" asp-route-IdCategoria="@item.IdCategoria">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+

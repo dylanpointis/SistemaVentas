@@ -1,0 +1,34 @@
+﻿@model CategoriaVM
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+
+<form asp-action="Crear" asp-controller="Categoria" method="post">
+    <div>
+        <input asp-for="oCategoria.IdCategoria" type="hidden">
+        
+        <div class="mb2">
+        <label class="form-label">Descripcion</label>
+        <br />
+        <input asp-for="oCategoria.Descripcion" type="text">
+        <span asp-validation-for="oCategoria.Descripcion" class="text-danger"></span>
+        </div>
+            
+        <div class="mb2">
+            <label class="form-label">Es Activo</label>
+            <br />
+            <input asp-for="oCategoria.EsActivo" class="form-check-input" type="checkbox">
+        </div>
+            
+        <br />
+    </div>
+    <div>
+        <hr />
+        <button type="submit" class="btn btn-primary">Crear</button>
+        <a class="btn btn-warning" asp-area="" asp-controller="Categoria" asp-action="Index">Volver a la lista Categorias</a>
+    </div>
+    
+</form>

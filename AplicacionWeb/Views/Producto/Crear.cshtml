@@ -1,0 +1,69 @@
+﻿@model ProductoVM
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+<form asp-action="Crear" asp-controller="Producto" method="post" enctype="multipart/form-data">
+    <div>
+        <input asp-for="oProducto.IdProducto" type="hidden">
+        <input type="hidden" asp-for="oProducto.EsActivo" value="true" />
+        <div class="mb2">
+            <label class="form-label">Codigo de Barra</label>  
+            <br />
+            <input asp-for="oProducto.CodigoBarra" type="number">
+            <span asp-validation-for="oProducto.CodigoBarra" class="text-danger"></span>
+        </div>
+        <div class="mb2">
+            <label class="form-label">Marca</label>
+                <br />
+            <input asp-for="oProducto.Marca" type="text">
+            <span asp-validation-for="oProducto.Marca" class="text-danger"></span>
+        </div>
+        <div class="mb2">
+            <label class="form-label">Nombre</label>
+            <br />
+            <input asp-for="oProducto.Nombre" type="text">
+            <span asp-validation-for="oProducto.Nombre" class="text-danger"></span>
+        </div>
+        <div class="mb2">
+                <label class="form-label">Descripcion</label>
+                <br />
+            <input asp-for="oProducto.Descripcion" type="text">
+            <span asp-validation-for="oProducto.Descripcion" class="text-danger"></span>
+        </div>
+        <div class="mb2">
+                <label class="form-label">Categoria</label>
+                <br />
+                <select class="form-select" asp-for="oProducto.IdCategoria" asp-items="@Model.oListaCategoria"></select>
+        </div>
+        <div class="mb2">
+                <label class="form-label">Stock</label>
+                <br />
+                <input asp-for="oProducto.Stock" type="number">
+        </div>
+        <div class="mb2">
+            <label class="form-label">Precio</label>
+            <br />
+                <input asp-for="oProducto.Precio" type="number">
+                <span asp-validation-for="oProducto.Precio" class="text-danger"></span>
+        </div>
+
+        <div class="mb2">
+            <label class="form-label">Imagen</label>
+            <br />
+            <input asp-for="oProducto.Imagen" type="file">
+            <span asp-validation-for="oProducto.Imagen" class="text-danger"></span>
+        </div>
+
+            <br/>
+        </div>
+        <div>
+            <hr />
+            <button type="submit" class="btn btn-primary">Crear</button>
+            <a class="btn btn-warning" asp-area="" asp-controller="Producto" asp-action="Index">Volver a la lista Producto</a>
+        </div>
+    
+</form>
